@@ -1,7 +1,10 @@
 {% extends "storeapp/base.html" %}
 {% load static %}
+
 {% block content %}
-<section class="bg0 p-t-52 p-b-20">
+<!-- breadcrumb -->
+{% include "storeapp/post/details/breadcrumb.html" %}
+	<section class="bg0 p-t-52 p-b-20">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8 col-lg-9 p-b-80">
@@ -9,7 +12,11 @@
 						<!--  -->
 						<div class="wrap-pic-w how-pos5-parent">
 							<img src="{% static 'images/blog-04.jpg' %}" alt="IMG-BLOG">
-
+								<p style="padding: 12px;">
+								<a href="{% url 'blog:post_share' post.id %}">
+								Share this post
+								</a>
+								</p>
 							<div class="flex-col-c-m size-123 bg9 how-pos5">
 								<span class="ltext-107 cl2 txt-center">
 									{{post.publish|date:"d"}}
@@ -38,85 +45,30 @@
 								</span>
 
 								<span>
-									<!-- 8 Comments -->
+									<!-- Comments -->
 										{% with comments.count as count  %}
 											{{count}} Comment{{count|pluralize}}
 										{% endwith %}
 								</span>
 							</span>
-
 							<h4 class="ltext-109 cl2 p-b-28">
 								{{post.title}}
 							</h4>
-
 							<p class="stext-117 cl6 p-b-26">
 								{{post.body}}
 							</p>
-
 						</div>
-
-						<div class="flex-w flex-t p-t-16">
-							<span class="size-216 stext-116 cl8 p-t-4">
-								Tags
-							</span>
-							
-							<div class="flex-w size-217">
-									{% for tag in post.tags.all %}
-									<a class='flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5' href="{% url 'blog:post_list_by_tag' tag.slug %}">
-									{{ tag.name }}
-									</a>
-								{# {% if not forloop.last %}, {% endif %} #}	
-								
-								{% endfor %}
-							</div>
-							
-						</div>
+						 <!-- tags -->
+						 {% include "storeapp/post/details/tags.html" %}
+						<!-- create comments  -->
+						{% include "storeapp/post/details/comments.html" %}
+									
 				
-						<!--  -->
-						<div class="p-t-40">					
-							{% if new_comment %}
-								<h1>Your comment has been added</h1>
-								
-							{% else %}
-							<h5 class="mtext-113 cl2 p-b-12">
-									Leave a Comment
-							</h5>
-
-							<p class="stext-107 cl6 p-b-40">
-								Your email address will not be published. Required fields are marked *
-							</p>
-							<form method="post" action=".">
-								{% csrf_token %}
-								<div class="bor19 m-b-20">{{form.body}}</div>
-								<div class="bor19 size-218 m-b-20">{{form.name}}</div>
-								<div class="bor19 size-218 m-b-20">{{form.email}}</div>
-								<input type="submit" value="Post Comment" class="flex-c-m stext-101 cl0 size-125 bg3 bor2 hov-btn3 p-lr-15 trans-04">
-							</form>
-							{% endif %}
-							
-						</div>
-						<div class="p-t-40">
-								<h5 class="mtext-113 cl2 p-b-12">
-										
-										{% with comments.count as count  %}
-											{{count}} comment {{count|pluralize}}
-										{% endwith %}
-											
-								</h5>
-								{% for comment in comments  %}
-								<div class="p-t-40" style="background-color: #fdfdfd; padding: 20px; border: 1px solid rgb(189, 189, 189); margin: 12px;">
-									
-									
-										<h5 style="padding: 12px;"><span style="color: rgb(61, 61, 61);"> {{comment.name}} </span><span style="font-size:14px;"> {{comment.created|date:"D, m, M, Y"}}</span></h5>
-										<span style="padding: 12px;">{{comment.body}}</span>
-
-								
-										
-								</div>
-								{% endfor %}
-						</div>
-
 					</div>
 				</div>
-            </section>
+						<!-- right-menu -->
+						{% include "storeapp/post/details/right_menu.html" %}
+			</div>
+		</div>
+	</section>
 {% endblock content %}

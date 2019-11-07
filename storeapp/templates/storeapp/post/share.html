@@ -1,0 +1,17 @@
+{% extends "storeapp/base.html" %}
+{% block title %}Share a post{% endblock %}
+{% block content %}
+{% if sent %}
+{% else %}
+<form method="post" action="." style="margin: 10px;">
+    {% csrf_token %}
+    <div class="bor19 size-218 m-b-20" >{{form.name}}</div>
+    <div class="bor19 size-218 m-b-20">{{form.email}}</div>
+    <div class="bor19 size-218 m-b-20">{{form.to}}</div>
+    <div class="bor19 size-218 m-b-20">{{form.comments}}</div>
+    <input type="submit" value="Post Comment" class="flex-c-m stext-101 cl0 size-125 bg3 bor2 hov-btn3 p-lr-15 trans-04">
+</form>
+{% endif %}
+{% endblock %}
+
+

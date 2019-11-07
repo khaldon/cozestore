@@ -1,0 +1,32 @@
+{% load storeapp_tags %}
+<div class="col-md-4 col-lg-3 p-b-80">
+        <div class="side-menu">
+                {% include "storeapp/post/search_form.html" %}
+            <div class="p-t-50">
+                    <h4 class="mtext-112 cl2 p-b-27">Similar Posts </h4>
+                    <div class="flex-w m-r--5">
+                        <ul>
+                            {% for post  in similar_posts  %}	
+                            <li class="p-b-7">
+                                <a href="{{post.get_absolute_url}}" class="flex-w flex-sb-m stext-115 cl6 hov-cl1 trans-04 p-tb-2">
+                                    <span>
+                                        {{post.title}}
+                                        {% empty %}
+                                        There are no similar posts yet
+                                    </span>
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+            </div>
+        </div>
+        <div class="p-t-50">
+            <h4 class="mtext-112 cl2 p-b-27">
+                Lastest posts 
+            </h4>
+            <div class="flex-w m-r--5">
+                {% show_latest_post 3 %}
+            </div>
+        </div>
+</div>

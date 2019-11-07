@@ -1,0 +1,40 @@
+<div class="p-t-40">					
+        {% if new_comment %}
+            <h1>Your comment has been added</h1>
+            
+        {% else %}
+        <h5 class="mtext-113 cl2 p-b-12">
+                Leave a Comment
+        </h5>
+
+        <p class="stext-107 cl6 p-b-40">
+            Your email address will not be published. Required fields are marked *
+        </p>
+        <form method="post" action=".">
+            {% csrf_token %}
+            <div class="bor19 m-b-20">{{form.body}}</div>
+            <div class="bor19 size-218 m-b-20">{{form.name}}</div>
+            <div class="bor19 size-218 m-b-20">{{form.email}}</div>
+            <input type="submit" value="Post Comment" class="flex-c-m stext-101 cl0 size-125 bg3 bor2 hov-btn3 p-lr-15 trans-04">
+        </form>
+        {% endif %}
+        
+    </div>
+    <div class="p-t-40">
+            <h5 class="mtext-113 cl2 p-b-12">
+                    
+                    {% with comments.count as count  %}
+                        {{count}} comment {{count|pluralize}}
+                    {% endwith %}
+                        
+            </h5>
+            {% for comment in comments  %}
+            <div class="p-t-40" style="background-color: #fdfdfd; padding: 20px; border: 1px solid rgb(189, 189, 189); margin: 12px;">
+                
+                    <h5 style="padding: 12px;"><span style="color: rgb(61, 61, 61);"> {{comment.name}} </span><span style="font-size:14px;"> {{comment.created|date:"D, m, M, Y"}}</span></h5>
+                    <span style="padding: 12px;">{{comment.body}}</span>
+
+            
+            </div>
+            {% endfor %}
+    </div>

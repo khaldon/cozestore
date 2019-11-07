@@ -29,7 +29,7 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
+SITE_ID = 1
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,10 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # add cozastore app 
+    # add cozastore apps
     'storeapp.apps.StoreappConfig',
+    'registeration.apps.RegistrationConfig',
     #taggit 
-    'taggit'
+    'taggit',
+    'django.contrib.sites',
+    'django.contrib.sitemaps'
 ]
 
 MIDDLEWARE = [
@@ -52,6 +55,14 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
+# Email settings 
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'mohamed.khaled33388@gmail.com'
+EMAIL_HOST_PASSWORD = 'mohamed199819989zr4e80['
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
 ROOT_URLCONF = 'cozastore.urls'
 
