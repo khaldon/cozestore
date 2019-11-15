@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock title %}</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'registration/css/bootstrap.min.css' %}">
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="{% static 'registration/fonts/material-icon/css/material-design-iconic-font.min.css' %} ">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="{% static 'registration/css/style.css' %}">
+</head>
+<body>
+
+    <div class="main">
+
+        {% block signup %}{% endblock signup %}
+        {% block login %}{% endblock login %}
+            
+    </div>
+</body>
+<!-- JS -->
+<script src="{% static 'registration/vendor/jquery/jquery.min.js' %} "></script>
+<script src="{% static 'registration/js/main.js' %}"></script>
+<script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %} "></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/animsition/js/animsition.min.js' %} "></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/bootstrap/js/popper.js' %} "></script>
+	<script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %} "></script>

@@ -25,5 +25,6 @@ sitemaps = {
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('storeapp/', include('storeapp.urls', namespace='blog')),
+    path('accounts/', include('registration.urls', namespace='register')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps},name='django.contrib.sitemaps.views.sitemap')
 ]

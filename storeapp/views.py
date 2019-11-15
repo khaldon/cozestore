@@ -12,6 +12,12 @@ from taggit.models import Tag
 from django.db.models import Count
 from django.shortcuts import render 
 
+
+
+
+def my_profile(request):
+    return render(request, 'storeapp/dashboard/profile.html')
+    
 class PostListView(ListView):
     # queryset = Post.published.all() 
     # context_object_name = 'posts'

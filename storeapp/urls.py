@@ -9,4 +9,6 @@ urlpatterns = [
     path('<int:year>/<int:month>/<int:day>/<slug:slug>/', views.PostDetailView.as_view(), name='post_detail'),
     path('<int:id>/share/', views.PostShareView.as_view(), name='post_share'),
     path('search/', views.PostSearch.as_view(), name='post_search'),
+    path('my_profile/', views.my_profile, name='my_profile'),
+
 ]

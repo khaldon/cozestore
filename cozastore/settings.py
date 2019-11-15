@@ -31,15 +31,15 @@ ALLOWED_HOSTS = []
 # Application definition
 SITE_ID = 1
 INSTALLED_APPS = [
+    # apps 
+    'storeapp.apps.StoreappConfig',
+    'registration.apps.RegistrationConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # add cozastore apps
-    'storeapp.apps.StoreappConfig',
-    'registeration.apps.RegistrationConfig',
     #taggit 
     'taggit',
     'django.contrib.sites',
@@ -138,3 +138,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     STATIC_URL,
 ]
+
+
+LOGIN_REDIRECT_URL = 'storeapp:post_list'
+LOGOUT_REDIRECT_URL = 'storeapp:post_list'
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
